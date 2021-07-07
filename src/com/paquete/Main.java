@@ -1,28 +1,28 @@
 package com.paquete;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);               //declaracion de elementos
+        String entradaTexto= "0", N_riesgo="", Ent_accion="";
+        int  cont_vig=0 ,cont=0;
+        float suma= 0, promedio= 0, max= 0;
 
-    public static void main(String[] args) throws IOException {
-        Scanner lector = new Scanner(System.in);
-        float vector[] = new float[7];
-        int itera, limite=7, suma=0, cont_vig=0 ;
-        float promedio=0, max=0;
-        String N_riesgo="", Ent_accion="";
+        entradaTexto = scanner.nextLine();
+        String[] textonumerico = entradaTexto.split(" ");
+        cont=textonumerico.length;
+        int vector [] = new int [cont];
 
-        for(itera=0; itera<limite; itera++){
-            vector[itera]=lector.nextFloat();
-            suma += vector[itera];
-            if (0 <= vector[itera] && vector[itera]<=5) {
+        for(int iterate=0;iterate<cont;iterate++){
+            vector [iterate] = Integer.parseInt(textonumerico[iterate]);
+            suma += vector[iterate];
+            if (0 <= vector[iterate] && vector[iterate]<=5) {
                 cont_vig++;
-            }if(max<= vector[itera] ){
-                max= vector[itera];
+            }if(max<= vector[iterate] ){
+                max= vector[iterate];
             }
         }
-        promedio = suma/limite;
+        promedio = suma / cont;
         if (0<=promedio && promedio<=5){
             N_riesgo = "SIN RIESGO";
             Ent_accion="Continuar el control y la vigilancia";
@@ -37,18 +37,5 @@ public class Main {
         }
         System.out.println(Ent_accion+"\t"+N_riesgo+"\t"+cont_vig+"\t"+max );
 
-
-        /*
-        System.out.println("Primera impresion" );
-        System.out.print("segunda impresión");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-        // Leyendo datos usando readLine
-        String name = reader.readLine();
-
-        // Imprimir la línea de lectura
-        System.out.println(name);
-
-	 */
     }
 }
